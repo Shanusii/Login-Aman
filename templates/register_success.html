@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Pindai QR — Login Aman{% endblock %}
+{% block content %}
+  <h2>Akun Dibuat 🎉</h2>
+  <p class="hint">
+    Langkah terakhir: pindai QR code ini dengan aplikasi authenticator
+    (mis. Google Authenticator) untuk mendaftarkan faktor kedua.
+  </p>
+
+  <div class="qr-box">
+    {{ qr_svg | safe }}
+  </div>
+
+  <p class="hint">Tidak bisa memindai? Masukkan kunci ini secara manual:</p>
+  <code class="secret">{{ secret }}</code>
+
+  <a href="{{ url_for('auth.login') }}" class="btn-primary btn-block">
+    Saya sudah memindai — Lanjut ke Login
+  </a>
+{% endblock %}

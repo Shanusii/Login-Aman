@@ -1,0 +1,234 @@
+:root {
+  --bg: #0f172a;
+  --card-bg: #1e293b;
+  --accent: #38bdf8;
+  --accent-strong: #0ea5e9;
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --border: #334155;
+  --danger: #f87171;
+  --success: #4ade80;
+  --info: #60a5fa;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: linear-gradient(160deg, #0f172a 0%, #1e293b 100%);
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 420px;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+.brand {
+  margin: 0;
+  font-size: 1.75rem;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  margin: 0.25rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.75rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.card h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.3rem;
+}
+
+.hint {
+  margin: 0 0 1.25rem;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+form { display: flex; flex-direction: column; gap: 0.35rem; }
+
+label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 0.6rem;
+}
+
+input {
+  padding: 0.7rem 0.85rem;
+  border-radius: 9px;
+  border: 1px solid var(--border);
+  background: #0f172a;
+  color: var(--text);
+  font-size: 1rem;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+}
+
+.otp-input {
+  letter-spacing: 0.5em;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.field-hint {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+
+button {
+  margin-top: 1.1rem;
+  padding: 0.8rem 1rem;
+  border: none;
+  border-radius: 9px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.05s, background 0.15s;
+}
+
+button:active { transform: translateY(1px); }
+
+.btn-primary {
+  background: var(--accent-strong);
+  color: #021018;
+}
+
+.btn-primary:hover { background: var(--accent); }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover { border-color: var(--danger); color: var(--danger); }
+
+.alt-link {
+  margin: 1.1rem 0 0;
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.alt-link a { color: var(--accent); text-decoration: none; }
+.alt-link a:hover { text-decoration: underline; }
+
+.flash-list { list-style: none; padding: 0; margin: 0 0 1rem; }
+
+.flash {
+  padding: 0.7rem 0.9rem;
+  border-radius: 9px;
+  font-size: 0.88rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid transparent;
+}
+
+.flash-info    { background: rgba(96,165,250,0.12); border-color: var(--info); color: var(--info); }
+.flash-error   { background: rgba(248,113,113,0.12); border-color: var(--danger); color: var(--danger); }
+.flash-success { background: rgba(74,222,128,0.12); border-color: var(--success); color: var(--success); }
+
+.dashboard-welcome {
+  background: #0f172a;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.92rem;
+}
+
+.dashboard-welcome p { margin: 0.35rem 0; }
+
+.strength { margin-top: 0.45rem; }
+
+.strength-bar {
+  height: 6px;
+  border-radius: 4px;
+  background: #0f172a;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.strength-bar span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: #334155;
+  transition: width 0.2s ease, background 0.2s ease;
+}
+
+.strength .field-hint { display: block; margin-top: 0.3rem; }
+
+.qr-box {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 0 auto 1rem;
+  width: max-content;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.qr-box svg {
+  width: 220px;
+  height: 220px;
+  display: block;
+}
+
+.secret {
+  display: block;
+  text-align: center;
+  background: #0f172a;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  padding: 0.6rem;
+  margin: 0.4rem 0 1.2rem;
+  font-size: 1.05rem;
+  letter-spacing: 1px;
+  color: var(--accent);
+  word-break: break-all;
+}
+
+.btn-block {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 0.5rem;
+  padding: 0.8rem 1rem;
+  border-radius: 9px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.app-footer {
+  text-align: center;
+  margin-top: 1.25rem;
+  color: var(--text-muted);
+}

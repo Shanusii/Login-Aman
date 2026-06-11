@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Verifikasi OTP — Login Aman{% endblock %}
+{% block content %}
+  <h2>Masuk — Langkah 2 dari 2</h2>
+  <p class="hint">Buka aplikasi authenticator Anda dan masukkan kode 6 digit yang sedang aktif.</p>
+
+  <form method="post" action="{{ url_for('auth.login_otp') }}" novalidate>
+    <label for="otp">Kode OTP</label>
+    <input type="text" id="otp" name="otp" required
+           inputmode="numeric" pattern="[0-9]{6}" maxlength="6"
+           autocomplete="one-time-code" placeholder="123456"
+           class="otp-input">
+    <small class="field-hint">Kode berganti setiap 30 detik.</small>
+
+    <button type="submit" class="btn-primary">Verifikasi &amp; Masuk</button>
+  </form>
+
+  <p class="alt-link">
+    <a href="{{ url_for('auth.login') }}">&larr; Kembali ke langkah 1</a>
+  </p>
+{% endblock %}

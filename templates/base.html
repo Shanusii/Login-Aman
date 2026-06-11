@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Sistem Login Aman{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <main class="container">
+    <header class="app-header">
+      <h1 class="brand">🔐 Login Aman</h1>
+      <p class="subtitle">Autentikasi 2 Faktor — bcrypt &amp; TOTP</p>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul class="flash-list">
+          {% for category, message in messages %}
+            <li class="flash flash-{{ category }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <section class="card">
+      {% block content %}{% endblock %}
+    </section>
+
+    <footer class="app-footer">
+      <small>Proyek Keamanan Informasi &middot; Demonstrasi akademik</small>
+    </footer>
+  </main>
+</body>
+</html>

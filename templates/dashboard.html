@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — Login Aman{% endblock %}
+{% block content %}
+  <h2>Dashboard</h2>
+  <p class="hint">Halaman ini hanya dapat diakses setelah login dua tahap berhasil.</p>
+
+  <div class="dashboard-welcome">
+    <p>Selamat datang{% if username %}, <strong>{{ username }}</strong>{% endif %} 👋</p>
+    <p>Sesi Anda valid. Faktor pertama (password) dan kedua (OTP) telah terverifikasi.</p>
+  </div>
+
+  <form method="post" action="{{ url_for('auth.logout') }}">
+    <button type="submit" class="btn-secondary">Logout</button>
+  </form>
+{% endblock %}

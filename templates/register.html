@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Registrasi — Login Aman{% endblock %}
+{% block content %}
+  <h2>Buat Akun Baru</h2>
+  <p class="hint">Password akan disimpan sebagai hash bcrypt, bukan teks asli.</p>
+
+  <form method="post" action="{{ url_for('auth.register') }}" novalidate>
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" required
+           autocomplete="username" minlength="3" maxlength="32"
+           value="{{ username|default('') }}"
+           placeholder="mis. budi_santoso">
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required
+           autocomplete="new-password" minlength="8"
+           placeholder="Minimal 8 karakter">
+
+    <!-- Indikator kekuatan password (FR-11) -->
+    <div class="strength" aria-hidden="true">
+      <div class="strength-bar"><span id="strengthFill"></span></div>
+      <small id="strengthLabel" class="field-hint">Gunakan minimal 8 karakter.</small>
+    </div>
+
+    <button type="submit" class="btn-primary">Daftar</button>
+  </form>
+
+  <p class="alt-link">
+    Sudah punya akun? <a href="{{ url_for('auth.login') }}">Masuk di sini</a>
+  </p>
+
+  <script>
+    (function () {
+      var input = document.getElementById('password');
+      var fill = document.getElementById('strengthFill');
+      var label = document.getElementById('strengthLabel');
+      var levels = [
+        { w: '0%',  c: '#334155', t: 'Gunakan minimal 8 karakter.' },
+        { w: '25%', c: '#f87171', t: 'Lemah' },
+        { w: '50%', c: '#fbbf24', t: 'Sedang' },
+        { w: '75%', c: '#38bdf8', t: 'Kuat' },
+        { w: '100%', c: '#4ade80', t: 'Sangat kuat' }
+      ];
+      function score(pw) {
+        if (!pw) return 0;
+        var s = 0;
+        if (pw.length >= 8) s++;
+        if (pw.length >= 12) s++;
+        if (/[a-z]/.test(pw) && /[A-Z]/.test(pw)) s++;
+        if (/\d/.test(pw)) s++;
+        if (/[^A-Za-z0-9]/.test(pw)) s++;
+        return Math.min(s, 4);
+      }
+      input.addEventListener('input', function () {
+        var lv = levels[score(input.value)];
+        fill.style.width = lv.w;
+        fill.style.background = lv.c;
+        label.textContent = lv.t;
+      });
+    })();
+  </script>
+{% endblock %}

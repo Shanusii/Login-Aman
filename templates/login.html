@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Masuk — Login Aman{% endblock %}
+{% block content %}
+  <h2>Masuk — Langkah 1 dari 2</h2>
+  <p class="hint">Masukkan kredensial Anda. Verifikasi OTP menyusul di langkah berikutnya.</p>
+
+  <form method="post" action="{{ url_for('auth.login') }}" novalidate>
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" required
+           autocomplete="username" value="{{ username|default('') }}"
+           placeholder="Username Anda">
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required
+           autocomplete="current-password" placeholder="Password Anda">
+
+    <button type="submit" class="btn-primary">Lanjut ke Verifikasi OTP</button>
+  </form>
+
+  <p class="alt-link">
+    Belum punya akun? <a href="{{ url_for('auth.register') }}">Daftar di sini</a>
+  </p>
+{% endblock %}
